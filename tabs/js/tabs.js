@@ -22,9 +22,7 @@ $.Tabs.prototype.clickTab = function (event) {
   
   // update tabs
   // $(event.currentTarget).siblings(".selected").removeClass("active");
-  this.$el.children().removeClass("active");
+  this.$el.children().children().removeClass("active");
   $(event.currentTarget).addClass('active');
-  
-  debugger;
 
 };
