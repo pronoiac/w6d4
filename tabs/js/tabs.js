@@ -14,15 +14,20 @@ $.fn.tabs = function () {
 $.Tabs.prototype.clickTab = function (event) {
   event.preventDefault();
   var clickedID = $(event.currentTarget).attr('href');
-  
-  // update activeTab
-  this.$contentTabs.children().removeClass("active");
-  this.$activeTab = this.$contentTabs.find(clickedID);
-  this.$activeTab.addClass('active');
-  
-  // update tabs
-  // $(event.currentTarget).siblings(".selected").removeClass("active");
   this.$el.children().children().removeClass("active");
   $(event.currentTarget).addClass('active');
-
+  // update activeTab
+  this.$contentTabs.children().removeClass("active");
+  this.$activeTab.addClass('transitioning');
+  
+  this.$activeTab.one('transitionend', function () {
+    this.$activeTab.removeClass('transitioning');
+    this.$activeTab = this.$contentTabs.find(clickedID);
+    this.$activeTab.addClass('transitioning');
+    setTimeout (function () {
+      this.$activeTab.removeClass('transitioning');
+      this.$activeTab.addClass('active');
+    }.bind(this), 0);
+  }.bind(this))
+  
 };

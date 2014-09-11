@@ -3,13 +3,22 @@
 }
 
 div.tab-pane {
-  opacity: 0;
-  display: block;
-  transition: opacity, 1000;
+  /*opacity: 1;*/
+  transition: opacity 1000;
+  display: none;
 }
 
-div.tab-pane.active {
-/*  display: block;*/
-  opacity: 1;
-  transition: opacity, 1000;
+div.tab-pane.transitioning {
+  opacity: 0;
+  display: block;
+
 }
+
+
+div.tab-pane.active {
+  display: block;
+  opacity: 1;
+
+}
+
+div.tab-pane
