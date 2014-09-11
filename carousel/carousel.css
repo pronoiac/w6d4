@@ -19,18 +19,18 @@ div.carousels > div.items > img {
 
 div.carousels > div.items > img.active {
   left: 0;
-  transition: left 5000ms linear;
+  transition: left 3s linear;
 }
 
 div.carousels > div.items > img:not(.active) {
   display:  none;
 }
 
-div.items img.active.left {
+div.carousels > div.items > img.active.left {
   left: -100%;
 }
 
-div.items img.active.right {
-  right: -100%;
+div.carousels > div.items > img.active.right {
+  left: 100%;
 }
  

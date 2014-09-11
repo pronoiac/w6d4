@@ -5,12 +5,12 @@ $.Carousels = function (el) {
   this.activeIndex = 0;
   $(this.$images[this.activeIndex]).addClass('active');
   
-  debugger
-  this.$el.on('click', this.$el.find('.slide-right'), 
+  this.$el.on('click', '.slide-right', 
     this.slideRight.bind(this));
-  this.$el.on('click', this.$el.find('.slide-left'), 
+  this.$el.on('click', '.slide-left', 
     this.slideLeft.bind(this));
   
+     
 };
 
 
@@ -35,18 +35,20 @@ $.fn.carousels = function () {
 };
 
 $.Carousels.prototype.slide = function slide (side) {
-  
+
   var oldIndex = this.activeIndex
   
-  $(this.$images[oldIndex]).removeClass('active');
-  
+  // $(this.$images[oldIndex]).removeClass('active');
+
   this.activeIndex += side;
   if (this.activeIndex < 0) {
-    this.activeIndex = this.$images.length;
+    this.activeIndex = this.$images.length - 1;
   }
   if (this.activeIndex > this.$images.length - 1) {
     this.activeIndex = 0;
   }
+
+  $(this.$images[this.activeIndex]).addClass('active');
   
   if (side < 0) {
      $(this.$images[this.activeIndex]).addClass('left');
@@ -56,12 +58,10 @@ $.Carousels.prototype.slide = function slide (side) {
     $(this.$images[oldIndex]).addClass('left');
   }
     
-  $(this.$images[this.activeIndex]).addClass('active');
-  
-  this.$images[oldIndex].one("transitionend", function () {
-    this.$images[oldIndex].removeClass('active left right');   
-    
-  }.bind(this)  )
-  
+
+  $(this.$images[oldIndex]).one("transitionend", function () {
+    console.log("dbg: transition-end");
+    $(this.$images[oldIndex]).removeClass('active left right');
+  }.bind(this)  );
 } // slide
   
