@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Dogs and cats!</title>
+    <script src="./jquery-2.1.1.js"></script>
+    <script src="./carousel.js"></script>
+    <link href="./carousel.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.17.2/build/cssreset/cssreset-min.css">
+  </head>
+
+<body>
+  <div class="carousels">
+    <div class="items"><img src="./img/001.jpeg"></div>
+    <div class="items"><img src="./img/002.jpeg"></div>
+    <div class="items"><img src="./img/003.jpeg"></div>
+    <div class="items"><img src="./img/004.jpeg"></div>
+    <a class="slide-right" href="#">Previous</a>
+    <a class="slide-left" href="#">Next</a>
+  </div>
+  
+  
+  <script>
+  $(function() {
+    $('.carousels').carousels();
+  })
+  </script>
+  
+  
+</body>
+  
+  
+</html>
