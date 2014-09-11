@@ -1,14 +1,26 @@
 <html>
   <head>
     <title>My Cruel Website</title>
-    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/jquery-2.1.1.js"></script>
     <script src="../js/tabs.js"></script>
     <link href="../css/tabs.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.17.2/build/cssreset/cssreset-min.css">
   </head>
 
   <body>
-    <ul class='tabs'></ul>
+    <ul class='tabs' data-content-tabs="#content-tabs">
+      <li><a href="#corgi" class="active">Corgi</a></li>
+      <li><a href="#finnish-spitz">Finnish Spitz</a></li>
+      <li><a href="#mutt">Mutt</a></li>
+    </ul>
+    
+    <div></div>
+    
+    <div id="content-tabs">
+      <div class="tab-pane active" id="corgi"><p>Corgis - The dog of English royalty</p></div>
+      <div class="tab-pane" id="finnish-spitz"><p>Finnish Spitz - Very dignified-looking</p></div>
+      <div class="tab-pane" id="mutt"><p>Mutt - genetic diversity ftw</p></div>
+    </div>
     
     
     
