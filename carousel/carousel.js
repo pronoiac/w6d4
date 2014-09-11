@@ -17,13 +17,12 @@ $.Carousels = function (el) {
 
 $.Carousels.prototype.slideLeft = function () {
   event.preventDefault();
-  
-  this.slide(-1);
+  this.slide(1);
 };
 
 $.Carousels.prototype.slideRight = function () {
   event.preventDefault();
-  this.slide(1);
+  this.slide(-1);
 };
 
 
@@ -31,12 +30,12 @@ $.Carousels.prototype.slideRight = function () {
 $.fn.carousels = function () {
   return this.each(function() {
     new $.Carousels(this);
-  })
+  });
 };
 
 $.Carousels.prototype.slide = function slide (side) {
 
-  var oldIndex = this.activeIndex
+  var oldIndex = this.activeIndex;
   
   // $(this.$images[oldIndex]).removeClass('active');
 
@@ -57,11 +56,14 @@ $.Carousels.prototype.slide = function slide (side) {
     $(this.$images[this.activeIndex]).addClass('right');
     $(this.$images[oldIndex]).addClass('left');
   }
-    
-
+  
+  setTimeout (function () {
+    $(this.$images[this.activeIndex]).removeClass('left right');
+  }.bind(this), 0);
+  
   $(this.$images[oldIndex]).one("transitionend", function () {
     console.log("dbg: transition-end");
     $(this.$images[oldIndex]).removeClass('active left right');
   }.bind(this)  );
-} // slide
+}; // slide
   
